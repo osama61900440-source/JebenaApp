@@ -36,6 +36,52 @@ from kivymd.uix.snackbar import Snackbar
 from kivymd.uix.textfield import MDTextField
 from kivymd.uix.toolbar import MDTopAppBar
 
+import sqlite3
+import os
+from kivy.utils import platform
+
+# 1. የዳታቤዝ መገኛን እና ሰንጠረዦችን የሚያዘጋጅ ፋንክሽን
+def ensure_database():
+    # በስልክ ላይ ሲሆን ዳታቤዙን ደህንነቱ የተጠበቀ ቦታ ያስቀምጣል
+    if platform == 'android':
+        from android.storage import app_storage_path
+        folder = app_storage_path()
+        db_path = os.path.join(folder, 'jebena.db')
+    else:
+        # በኮምፒውተር ወይም በ Pydroid ሲሆን እዛው ፎልደር ውስጥ
+        db_path = 'jebena.db'
+
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+
+    # ለምርቶች መመዝገቢያ ሰንጠረዥ (ከሌለ ይፈጥረዋል)
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS products (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            price REAL NOT NULL,
+            stock INTEGER DEFAULT 0
+        )
+    ''')
+
+    # ለሽያጭ መዝገብ ሰንጠረዥ (ከሌለ ይፈጥረዋል)
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS sales (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            product_id INTEGER,
+            quantity INTEGER,
+            total_price REAL,
+            date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
+    conn.commit()
+    conn.close()
+    return db_path
+
+# 2. አፑ ስራ ከመጀመሩ በፊት ዳታቤዙን እንዲያዘጋጅ መጥራት
+DB_PATH = ensure_database()
+
 
 # ═══════════════════════════════════════════════════════════
 #  DATABASE
