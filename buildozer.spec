@@ -12,7 +12,7 @@ source.include_exts  = py,db,png,jpg,jpeg,kv,atlas,ttf
 source.include_patterns = logo.png,background.jpg,jebena.db
 
 # ── Requirements (sqlite3 is built-in — do NOT add it) ────
-requirements = python3,kivy==2.2.1,kivymd==1.1.1
+requirements = python3, kivy==2.3.0, kivymd==1.2.0, pillow, sqlite3, android
 
 # ── Display ───────────────────────────────────────────────
 orientation = portrait
