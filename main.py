@@ -1,5 +1,5 @@
 """
-Jebena & Sefed - Sales Manager
+Jebena & App - Sales Manager
 Samsung Galaxy S14 Android - KivyMD
 """
 
