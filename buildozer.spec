@@ -5,7 +5,7 @@
 title = JebenaApp
 
 # የአፑ መጠሪያ (ያለ ክፍተት በትንሽ ፊደል)
-package.name = jebenasered
+package.name = jebenaapp
 
 # የአፑ መለያ (Domain)
 package.domain = org.jebena
