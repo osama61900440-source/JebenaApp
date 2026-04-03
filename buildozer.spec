@@ -2,7 +2,7 @@
 
 # ── የአፑ ስም እና መለያ (App Identity) ──────────────────────
 # ስልኩ ላይ የሚታየው ስም
-title = Jebena Sefed
+title = Jebena
 
 # የአፑ መጠሪያ (ያለ ክፍተት በትንሽ ፊደል)
 package.name = jebenasered
