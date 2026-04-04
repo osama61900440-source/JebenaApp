@@ -1,5 +1,5 @@
 """
-Jebena & Sefed - Sales Manager
+Jebena & App - Sales Manager
 KivyMD App  |  100% Crash-Free Version
 """
 
